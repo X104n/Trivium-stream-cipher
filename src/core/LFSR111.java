@@ -1,12 +1,12 @@
 package core;
 
-public class LFSR111 extends LFSR{
+public class LFSR111 extends LFSR {
 
     protected int[] content;
     protected int startBit;
     protected boolean newStartBit;
 
-    public LFSR111(int[] content){
+    public LFSR111(int[] content) {
         if (!(content.length == 111)) {
             throw new IllegalArgumentException();
         }
@@ -17,9 +17,9 @@ public class LFSR111 extends LFSR{
 
     @Override
     public int endBit() {
-        int and8283 = Operations.bitAND(content[81], content[82]);
-        int xor69AND = Operations.bitXOR(content[68], and8283);
-        int result = Operations.bitXOR(content[83], xor69AND);
+        int and8283 = Operations.bitAND(content[109], content[108]);
+        int xor69AND = Operations.bitXOR(content[65], and8283);
+        int result = Operations.bitXOR(content[110], xor69AND);
         return result;
     }
 
@@ -32,12 +32,12 @@ public class LFSR111 extends LFSR{
     }
 
     @Override
-    public void step(){
+    public void step() {
         if (!this.newStartBit) {
             throw new IllegalArgumentException("This isn't a new start bit");
         }
 
-        for (int i = content.length - 1; i <= 1; i--) {
+        for(int i = content.length - 1; i >= 1; i--) {
             content[i] = content[i - 1];
         }
         content[0] = startBit;
