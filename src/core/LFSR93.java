@@ -38,7 +38,7 @@ public class LFSR93 extends LFSR{
             throw new IllegalArgumentException("This isn't a new start bit");
         }
 
-        for (int i = content.length - 1; i <= 1; i--) {
+        for (int i = content.length - 1; i >= 1; i--) {
             content[i] = content[i - 1];
         }
         content[0] = startBit;

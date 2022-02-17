@@ -1,6 +1,7 @@
 package core;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 
 public class Trivium {
 
@@ -9,33 +10,20 @@ public class Trivium {
     LFSR84 Lfsr84;
     LFSR111 Lfsr111;
     String stream;
+    ArrayList<Integer> streamArray;
 
     public Trivium() {
         this.Lfsr93 = new LFSR93(Lfsr93Maker());
         this.Lfsr84 = new LFSR84(Lfsr84Maker());
         this.Lfsr111 = new LFSR111(Lfsr111Maker());
+        this.streamArray = new ArrayList<>();
         this.stream = "";
     }
 
     public int[] Lfsr93Maker() {
-        int[] key = keyMaker();
+        int[] IV = IVMaker();
         int[] result = new int[93];
         for(int i = 0; i < 93; i++){
-            if(i < key.length){
-                result[i] = key[i];
-            }
-            else{
-                result[i] = 0;
-            }
-        }
-
-        return result;
-    }
-
-    public int[] Lfsr84Maker(){
-        int[] IV = IVMaker();
-        int[] result = new int[84];
-        for(int i = 0; i < 84; i++){
             if(i < IV.length){
                 result[i] = IV[i];
             }
@@ -43,7 +31,20 @@ public class Trivium {
                 result[i] = 0;
             }
         }
+        return result;
+    }
 
+    public int[] Lfsr84Maker(){
+        int[] key = keyMaker();
+        int[] result = new int[84];
+        for(int i = 0; i < 84; i++){
+            if(i < key.length){
+                result[i] = key[i];
+            }
+            else{
+                result[i] = 0;
+            }
+        }
         return result;
     }
 
@@ -75,13 +76,14 @@ public class Trivium {
     }
 
     public String getStream(){
-        return stream;
+        return streamArray.toString();
     }
 
     public void run(int steps){
         warmup();
         for(int i = 0; i < steps; i++){
-            stream = stream + String.valueOf(step());
+            int temp = step();
+            streamArray.add(temp);
         }
     }
 
@@ -91,7 +93,6 @@ public class Trivium {
             step();
         }
     }
-
     public int step(){
         int end93 = Lfsr93.endBit();
         int end84 = Lfsr84.endBit();
