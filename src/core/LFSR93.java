@@ -27,13 +27,21 @@ public class LFSR93 extends LFSR{
     @Override
     public int startBit(int previous) {
         int bit = Operations.bitXOR(content[68], previous);
-        startBit = bit;
-        newStartBit = true;
+        this.startBit = bit;
+        this.newStartBit = true;
         return bit;
     }
 
     @Override
     public void step() {
-        super.step();
+        if (!this.newStartBit) {
+            throw new IllegalArgumentException("This isn't a new start bit");
+        }
+
+        for (int i = content.length - 1; i <= 1; i--) {
+            content[i] = content[i - 1];
+        }
+        content[0] = startBit;
+        this.newStartBit = false;
     }
 }

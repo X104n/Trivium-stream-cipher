@@ -8,7 +8,7 @@ public abstract class LFSR implements ILFSR {
 
     @Override
     public void step() {
-        if (!newStartBit) {
+        if (!this.newStartBit) {
             throw new IllegalArgumentException("This isn't a new start bit");
         }
 
@@ -16,6 +16,6 @@ public abstract class LFSR implements ILFSR {
             content[i] = content[i - 1];
         }
         content[0] = startBit;
-        newStartBit = false;
+        this.newStartBit = false;
     }
 }
