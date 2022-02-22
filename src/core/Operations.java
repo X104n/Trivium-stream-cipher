@@ -12,9 +12,9 @@ public class Operations {
         return result;
     }
 
-    public static int bitXOR(int v1, int v2) {
+    public static int bitXOR(int b1, int b2) {
         int result;
-        int b = (v1 + v2) % 2;
+        int b = (b1 + b2) % 2;
         result = b;
         return result;
     }
@@ -32,9 +32,9 @@ public class Operations {
         return result;
     }
 
-    public static int bitAND(int v1, int v2) {
+    public static int bitAND(int b1, int b2) {
         int result;
-        if (v1 == 1 && v2 == 1) {
+        if (b1 == 1 && b2 == 1) {
             result = 1;
         } else {
             result = 0;

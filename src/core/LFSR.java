@@ -6,6 +6,11 @@ public abstract class LFSR implements ILFSR {
     int startBit;
     boolean newStartBit;
 
+
+    /**
+     * As the code is now, we actually don't need this abstract class.
+     * But would like to figure out how to use this class inn all the LFSR's to run the same step command.
+     */
     @Override
     public void step() {
         if (!this.newStartBit) {
