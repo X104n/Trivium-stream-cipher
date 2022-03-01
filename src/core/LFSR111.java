@@ -1,6 +1,6 @@
 package core;
 
-public class LFSR111 extends LFSR {
+public class LFSR111 implements ILFSR {
 
     protected int[] content;
     protected int startBit;
