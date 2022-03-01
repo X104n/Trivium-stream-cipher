@@ -1,6 +1,6 @@
 package core;
 
-public class LFSR84 extends LFSR {
+public class LFSR84 implements ILFSR {
 
     protected int[] content;
     protected int startBit;
@@ -31,14 +31,13 @@ public class LFSR84 extends LFSR {
         this.newStartBit = true;
         return bit;
     }
-
     @Override
     public void step() {
         if (!this.newStartBit) {
             throw new IllegalArgumentException("This isn't a new start bit");
         }
 
-        for (int i = content.length - 1; i >= 1; i--) {
+        for(int i = content.length - 1; i >= 1; i--) {
             content[i] = content[i - 1];
         }
         content[0] = startBit;
