@@ -19,8 +19,7 @@ public class LFSR111 implements ILFSR {
     public int endBit() {
         int and8283 = Operations.bitAND(content[109], content[108]);
         int xor69AND = Operations.bitXOR(content[65], and8283);
-        int result = Operations.bitXOR(content[110], xor69AND);
-        return result;
+        return Operations.bitXOR(content[110], xor69AND);
     }
 
     @Override

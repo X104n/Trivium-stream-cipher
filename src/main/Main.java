@@ -12,7 +12,7 @@ public class Main {
     private static void testData(){
         Trivium testTrivium = new Trivium(Generator.testIVMaker(), Generator.testKeyMaker());
         testTrivium.run(50);
-        System.out.println("\nThe test data trivium result (first 40 bits): ");
+        System.out.println("\nThe test data trivium result (first 50 bits): ");
         System.out.println(testTrivium.getStream());
     }
 
