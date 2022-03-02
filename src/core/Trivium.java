@@ -4,18 +4,22 @@ import java.util.ArrayList;
 
 public class Trivium {
 
-    LFSR93 Lfsr93;
-    LFSR84 Lfsr84;
-    LFSR111 Lfsr111;
-    String stream;
-    ArrayList<Integer> streamArray;
+    private final LFSR93 Lfsr93;
+    private final LFSR84 Lfsr84;
+    private final LFSR111 Lfsr111;
+    private final ArrayList<Integer> streamArray;
 
+    /**
+     * Making a new Trivium stream cipher.
+     * @param IV The IV we use for the LFSR93
+     * @param key The Key we use for the LFSR84
+     */
     public Trivium(int[] IV, int[] key) {
         this.Lfsr93 = new LFSR93(lfsr93Maker(IV));
         this.Lfsr84 = new LFSR84(lfsr84Maker(key));
         this.Lfsr111 = new LFSR111(lfsr111Maker());
         this.streamArray = new ArrayList<>();
-        this.stream = "";
+        String stream = "";
     }
 
     /**
@@ -32,9 +36,8 @@ public class Trivium {
 
     /**
      * "Warp-up" before we start computing the stream cipher
-     *
      */
-    public void warmup(){
+    private void warmup(){
         int warpUpRounds = 1152;
         for(int i = 0; i < warpUpRounds; i++){
             step();
@@ -46,7 +49,7 @@ public class Trivium {
      *
      * @return The bit that will be added to the stream
      */
-    public int step(){
+    private int step(){
 
         //First we find what bit that comes out of each of the LFSR
         int end93 = Lfsr93.endBit();
@@ -65,9 +68,15 @@ public class Trivium {
 
         //Then we XOR the 3 bits together to get the stream bit
         int firstXor = Operations.bitXOR(end93, end84);
-        int bitStream = Operations.bitXOR(firstXor, end111);
 
-        return bitStream;
+        return Operations.bitXOR(firstXor, end111);
+    }
+
+    /**
+     * @return The stream cipher in String format
+     */
+    public String getStream(){
+        return streamArray.toString();
     }
 
     /**
@@ -107,14 +116,6 @@ public class Trivium {
             result[i] = 1;
         }
         return result;
-    }
-
-    /**
-     *
-     * @return The stream cipher in String format
-     */
-    public String getStream(){
-        return streamArray.toString();
     }
 
 }
