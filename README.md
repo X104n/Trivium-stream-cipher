@@ -25,3 +25,4 @@ To get more specific information about how this stream cipher works you can take
 
 ## The project
 The project is an assignment for the course "Applied Cryptography" INF 143A at the University of Bergen.
+

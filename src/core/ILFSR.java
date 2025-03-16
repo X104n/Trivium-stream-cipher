@@ -18,7 +18,7 @@ public interface ILFSR {
      * This gets the bit that is XORed with a bit in the current LFSR and the previous
      *
      * @param previous Gets the bit that was XORed with the previous LFSR
-     * @return Bit that is bushed into the LFSR
+     * @return Bit that is pushed into the LFSR
      */
     int startBit(int previous);
 

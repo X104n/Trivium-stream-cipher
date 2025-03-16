@@ -19,7 +19,6 @@ public class Trivium {
         this.Lfsr84 = new LFSR84(lfsr84Maker(key));
         this.Lfsr111 = new LFSR111(lfsr111Maker());
         this.streamArray = new ArrayList<>();
-        String stream = "";
     }
 
     /**
@@ -100,7 +99,9 @@ public class Trivium {
     public int[] lfsr84Maker(int[] key){
         int[] result = new int[84];
         for(int i = 0; i < 84; i++){
-            if(i < key.length) result[i] = key[i];
+            if(i < key.length) {
+                result[i] = key[i];
+            }
         }
         return result;
     }
