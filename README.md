@@ -18,12 +18,10 @@ Use your implementation with key *K* = (1, 0, 1, 0, . . . , 1, 0) (80 alternatin
 ones and zeros) and *IV* = (0, 1, . . . , 0, 1) (80 alternating zeros and ones) to
 generate 1000 bits of key-stream.
 
-![Trivium Visualization](./src/documents/TriviumVisualization.png?raw=true "Screenshot")
+![Trivium Visualization](./src/documents/TriviumVisualization.png)
 
 ## The stream cipher
 To get more specific information about how this stream cipher works you can take visit to wikipedia through [this link](https://en.wikipedia.org/wiki/Trivium_(cipher))
 
 ## The project
-This was originally just an assignment, but I found the different assignments quite 
-interesting. So I will make the project more modular to user input, and hopefully be 
-able du make a simple GUI to go with it.
+The project is an assignment for the course "Applied Cryptography" INF 143A at the University of Bergen.
