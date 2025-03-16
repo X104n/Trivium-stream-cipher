@@ -34,4 +34,20 @@ public class Generator {
         return result;
     }
 
+    public static int[] customKeyMaker(int[] key) {
+        int[] result = new int[84];
+        for (int i = 0; i < 80; i++) {
+            result[i] = key[i];
+        }
+        return result;
+    }
+
+    public static int[] customIVMaker(int[] iv) {
+        int[] result = new int[93];
+        for (int i = 0; i < 80; i++) {
+            result[i] = iv[i];
+        }
+        return result;
+    }
+
 }
