@@ -40,5 +40,3 @@ generate 1000 bits of key-stream.
 
 ## The stream cipher
 To get more specific information about how this stream cipher works you can take visit to wikipedia through [this link](https://en.wikipedia.org/wiki/Trivium_(cipher))
-
-
